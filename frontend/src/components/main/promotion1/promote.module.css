@@ -1,0 +1,210 @@
+.poweredBySkylink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  margin-left: 2.5rem;
+  font-size: 1.05rem;
+  color: #7acbb7;
+  font-weight: 600;
+  opacity: 0.85;
+  letter-spacing: 0.2px;
+}
+.skylinkLogo {
+  width: 70px;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  filter: grayscale(0.1) brightness(1.1);
+  opacity: 0.92;
+}
+
+.phoneImageBest {
+  width: 480px;
+  max-width: 48vw;
+  min-width: 220px;
+  height: auto;
+  display: block;
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin: 0;
+  animation: phoneFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes phoneFloat {
+  0% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(6deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+}
+
+.promotionBest {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3.5rem;
+  padding: 3.5rem 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 2.5rem auto;
+}
+.promoRight {
+  flex: 1 1 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.7rem;
+  min-width: 260px;
+  max-width: 480px;
+}
+.promoHeadline {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #01ad88;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+.promoBenefit {
+  font-size: 1.18rem;
+  color: #042048;
+  margin-bottom: 0.7rem;
+  font-weight: 500;
+  opacity: 0.92;
+}
+.downloadRow {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.promoDownloadBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: linear-gradient(90deg, #00c894 0%, #01ad88 100%);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 1.1rem 2.5rem;
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-decoration: none;
+  box-shadow: 0 4px 24px #00c89433;
+  transition: background 0.22s, color 0.22s, box-shadow 0.22s,
+    transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 0.7rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.promoDownloadBtn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 2rem;
+  background: linear-gradient(120deg, #00c89455 0%, #01ad8855 100%);
+  opacity: 0;
+  transition: opacity 0.22s;
+  z-index: 0;
+}
+.promoDownloadBtn:hover::before {
+  opacity: 1;
+  animation: btnGlowPulse 1.2s infinite alternate;
+}
+@keyframes btnGlowPulse {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.promoDownloadBtn:hover {
+  background: linear-gradient(90deg, #01ad88 0%, #00c894 100%);
+  color: #fff;
+  box-shadow: 0 12px 40px #00c89477, 0 0 0 4px #00c89433;
+  transform: translateY(-2px) scale(1.04);
+}
+.promoDownloadBtn:active {
+  background: linear-gradient(90deg, #019e6b 0%, #00b07a 100%);
+  color: #e3f9f2;
+  box-shadow: 0 2px 8px #00c89433;
+  transform: scale(0.97);
+}
+.promoBtnIcon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+.promoDownloadBtn:hover .promoBtnIcon {
+  transform: scale(1.18) rotate(-8deg);
+}
+.qrContainerSmall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  box-shadow: none;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.3rem 0.1rem 0.3rem;
+  min-width: 0;
+  max-width: 70px;
+}
+.qrImageSmall {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 0.3rem;
+  margin-bottom: 0.1rem;
+}
+.qrLabelSmall {
+  font-size: 0.85rem;
+  color: #01ad88;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-top: 0.1rem;
+}
+@media (max-width: 900px) {
+  .promotionBest {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  .phoneImageBest {
+    margin-bottom: 1.5rem;
+  }
+  .promoRight {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  .promoHeadline {
+    font-size: 1.5rem;
+  }
+  .promoBenefit {
+    font-size: 1.08rem;
+  }
+  .downloadRow {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.2rem;
+    gap: 1.2rem;
+  }
+  .promoDownloadBtn {
+    width: 90vw;
+    max-width: 340px;
+    margin-bottom: 0.7rem;
+  }
+  .qrContainerSmall {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,101 @@
+.reviewSection {
+  padding: 3rem 3.5rem 2.5rem 3.5rem;
+  background: #f7fafd;
+  text-align: center;
+}
+
+.heading {
+  color: #042048;
+  font-size: 1.7rem;
+  margin-bottom: 2.2rem;
+  font-weight: 700;
+}
+
+.reviews {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 5rem;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.reviewCard {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+  padding: 1rem 0.7rem 1rem 0.7rem;
+  max-width: 220px;
+  min-width: 160px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.reviewCard:hover {
+  box-shadow: 0 6px 32px #00c89433;
+  transform: translateY(-4px) scale(1.03);
+}
+
+.reviewCard:not(:last-child) {
+  margin-right: 2.5rem;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.2rem;
+  border: 3px solid #00c894;
+  background: #e6f9f3;
+}
+
+.text {
+  font-size: 1.08rem;
+  color: #042048;
+  margin-bottom: 1.2rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.reviewer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name {
+  font-weight: 600;
+  color: #00c894;
+  font-size: 1.08rem;
+}
+
+.role {
+  color: #042048;
+  font-size: 0.98rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+  .reviews {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .reviewCard {
+    max-width: 95vw;
+    min-width: 0;
+    padding: 1.2rem 0.8rem 1.2rem 0.8rem;
+    height: auto;
+    justify-content: center;
+  }
+  .text {
+    font-size: 1.18rem;
+    line-height: 1.8;
+    padding: 0 0.2rem;
+  }
+}

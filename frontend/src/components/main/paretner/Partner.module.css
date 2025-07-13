@@ -1,0 +1,80 @@
+.partnerSection {
+  padding: 2.5rem 1rem 2rem 1rem;
+  background: #fff;
+  text-align: center;
+}
+
+.heading {
+  color: #042048;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.partnerLabel {
+  margin-top: 0.2rem;
+  font-size: 1.02rem;
+  color: #01ad88;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.partnerBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.logoRing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafdff;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px #00c89422;
+  border: 3px solid #00c894;
+  padding: 1.2rem;
+  margin-bottom: 0.7rem;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+
+.partnerLogo {
+  width: 90px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.partnerDesc {
+  margin-top: 0.3rem;
+  font-size: 1.01rem;
+  color: #042048;
+  font-weight: 400;
+  opacity: 0.85;
+  text-align: center;
+  max-width: 320px;
+}
+
+@media (max-width: 700px) {
+  .partnerBadge {
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+  }
+  .logoRing {
+    padding: 0.7rem;
+  }
+  .partnerLogo {
+    width: 60px;
+    height: 32px;
+  }
+  .partnerDesc {
+    font-size: 0.97rem;
+    max-width: 90vw;
+  }
+}

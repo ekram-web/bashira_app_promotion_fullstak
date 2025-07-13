@@ -1,0 +1,147 @@
+.section {
+  background-color: #e0fdf4;
+  padding: 4rem 2rem;
+}
+
+.container {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: flex;
+  gap: 5rem;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* LEFT SIDE: Sticky text */
+.leftSticky {
+  flex: 1;
+  position: sticky;
+  top: 300px;
+  align-self: flex-start;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+  line-height: 1.6;
+}
+
+.heading span {
+  color: #0f766e;
+}
+
+.subheading {
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: #334155;
+  max-width: 400px;
+}
+
+/* RIGHT SIDE: Scrollable cards */
+.rightScroll {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.stepLabel {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  background-color: #10b981;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+
+.cardDesc {
+  font-size: 1rem;
+  color: #475569;
+}
+
+.imageWrap {
+  margin-top: 1.5rem;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  min-height: 180px;
+}
+
+.cardText {
+  flex: 1;
+}
+
+.imageWrap img {
+  max-width: 580px;
+  min-width: 120px;
+  max-height: 400px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+
+
+@media (max-width: 900px) {
+  .section {
+    padding: 2.5rem 1rem;
+  }
+  .container {
+    gap: 2rem;
+  }
+  .heading {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 1.2rem 0.5rem;
+  }
+  .container {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+  .leftSticky {
+    position: static;
+    top: auto;
+    margin-bottom: 1.5rem;
+  }
+  .heading {
+    font-size: 1.3rem;
+  }
+  .subheading {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+  .rightScroll {
+    gap: 1.2rem;
+  }
+  .card {
+    padding: 1rem;
+  }
+  .imageWrap img {
+    max-height: 120px;
+  }
+}

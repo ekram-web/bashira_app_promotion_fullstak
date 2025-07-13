@@ -1,0 +1,96 @@
+.aboutSection {
+  background: linear-gradient(120deg, #f7fafd 60%, #e0f7f4 100%);
+  padding: 4rem 1rem 3rem 1rem;
+  min-height: 420px;
+}
+
+.aboutLayout {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  position: relative;
+  min-height: 420px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.aboutImageBox {
+  flex: 0 0 45%;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  position: relative;
+  height: 100%;
+}
+.aboutImage {
+  width: 100%;
+  height: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 32px #00c89422;
+  min-height: 420px;
+}
+
+.aboutLogoOverlay {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 14px;
+  box-shadow: 0 4px 24px #00c89433;
+  padding: 10px 16px 10px 14px;
+  display: flex;
+  align-items: center;
+}
+.aboutLogo {
+  width: 48px;
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 8px #00c89433);
+  margin: 0;
+}
+
+.aboutTextBox {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 2.5rem;
+  padding-top: 2.5rem;
+}
+.aboutTitle {
+  font-size: 2.8rem;
+
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #231f20;
+  margin-bottom: 2.5rem;
+}
+.aboutText {
+  font-size: 1.18rem;
+  color: #231f20cc;
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+@media (max-width: 900px) {
+  .aboutLayout {
+    flex-direction: column;
+    align-items: center;
+    min-height: 0;
+    padding-bottom: 3.5rem;
+  }
+  .aboutImageBox {
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  .aboutTextBox {
+    padding-left: 0;
+    padding-top: 0;
+    align-items: center;
+    text-align: center;
+  }
+}

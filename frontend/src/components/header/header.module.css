@@ -1,0 +1,266 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 2000;
+  transition: background 0.4s, box-shadow 0.4s, border 0.4s;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 32, 72, 0.92) 60%,
+    rgba(0, 200, 148, 0.85) 100%
+  );
+  box-shadow: 0 2px 16px #00c89422;
+  border-bottom: 1.5px solid rgba(0, 200, 148, 0.13);
+  font-family: "Poppins", sans-serif;
+  font-weight: 250;
+  height: 66px;
+}
+
+.transparent {
+  background: none !important;
+  box-shadow: none !important;
+  border-bottom: 1.5px solid rgba(0, 200, 147, 0.11);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 1.2rem;
+  gap: 1.2rem;
+  min-height: 60px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  margin-right: 1.2rem;
+  margin-left: 1.5rem;
+}
+
+.logo img {
+  height: 60px;
+  width: auto;
+  transform: scale(3.25);
+  transform-origin: center;
+  /* filter: drop-shadow(0 2px 8px #00c89455); */
+  /* border-radius: 12px; */
+  /* background: rgba(255, 255, 255, 0.12); */
+}
+
+/* .brandName {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #fff;
+  text-shadow: 0 2px 8px #04204844;
+  background: linear-gradient(90deg, #00c894 0%, #01ad88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+} */
+
+.navMenu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+.navMenu ul {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+  margin: 0;
+  padding-left: 0.5rem;
+  margin-top: 1rem;
+}
+
+.navMenu a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  letter-spacing: 0.1px;
+  transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+  position: relative;
+  padding: 0.5rem 0.5rem;
+  border-radius: 8px;
+  display: inline-block;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+}
+
+.navMenu a::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: #00c894;
+  transition: width 0.3s;
+  margin: 4px auto 0 auto;
+}
+
+.navMenu a:hover::after,
+.navMenu a:focus::after,
+.navMenu a.activeLink::after {
+  width: 100%;
+}
+
+.navMenu a:hover,
+.navMenu a:focus {
+  color: #00c894;
+}
+
+.navMenu a.activeLink {
+  color: #00c894;
+}
+
+.menuIcon {
+  display: none;
+}
+
+.closeMenu {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    padding: 0.2rem 1rem;
+    justify-content: flex-start;
+  }
+
+  .navMenu ul {
+    gap: 1.2rem;
+  }
+
+  .brandName {
+    font-size: 1.1rem;
+  }
+  .navMenu {
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 0.2rem 0.7rem;
+  }
+
+  .logo {
+    margin-right: 0.8rem;
+  }
+
+  .menuIcon {
+    display: block;
+    position: fixed;
+    top: 1.2rem;
+    right: 1.2rem;
+    z-index: 4000;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    margin-left: 0;
+    margin-right: 0;
+    order: 3;
+  }
+
+  .navMenu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 340px;
+    min-width: 180px;
+    height: 100vh;
+    background: linear-gradient(120deg, #042048 80%, #00c894 100%);
+    z-index: 2500;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s,
+      box-shadow 0.3s;
+    transform: translateX(100%) scale(0.98);
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: -2px 0 24px #00c89433, 0 2px 16px #04204822;
+  }
+
+  .navMenu.open {
+    display: flex;
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: -2px 0 32px #00c89455, 0 2px 24px #04204833;
+    animation: menuPopIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes menuPopIn {
+    0% {
+      opacity: 0;
+      transform: translateX(100%) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  .navMenu ul {
+    flex-direction: column;
+    gap: 2.2rem;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0;
+    margin-top: 0;
+  }
+
+  .navMenu a {
+    font-size: 1.1rem;
+    color: #fff;
+    padding: 0.9rem 2.2rem;
+    border-radius: 12px;
+    background: rgba(4, 32, 72, 0.92);
+    display: block;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+
+  .navMenu a:active {
+    transform: scale(0.97);
+    background: #00c894;
+    color: #042048;
+  }
+
+  .navMenu a:hover,
+  .navMenu a:focus {
+    background: #00c894;
+    color: #042048;
+  }
+
+  .closeMenu {
+    display: block;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    font-size: 2.2rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 3000;
+  }
+}
