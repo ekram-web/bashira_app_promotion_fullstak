@@ -65,7 +65,6 @@ function Review() {
   useEffect(() => {
     fetchReviews()
       .then((res) => {
-        // Transform backend data to match frontend format
         const transformedReviews = res.data.map((review) => ({
           name: review.name,
           role: review.role,
@@ -78,7 +77,6 @@ function Review() {
         setLoading(false);
       })
       .catch(() => {
-        // Use fallback data if API fails
         setReviews(fallbackReviews);
         setLoading(false);
       });
@@ -86,7 +84,6 @@ function Review() {
 
   useEffect(() => {
     if (reviews.length === 0) return;
-    
     const interval = setInterval(() => {
       setIndex((prev) => {
         if (prev < reviews.length - cardsToShow) {
@@ -159,9 +156,10 @@ function Review() {
               }}
             >
               <img
-                src={review.img}
+                src={review.img ? review.img : ustazImg}
                 alt={review.name}
                 className={styles.avatar}
+                onError={e => { e.target.onerror = null; e.target.src = ustazImg; }}
               />
               <p className={styles.text}>&ldquo;{review.text}&rdquo;</p>
               <div className={styles.reviewer}>

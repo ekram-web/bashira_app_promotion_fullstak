@@ -52,12 +52,13 @@ function Promotion() {
           <div className={styles.frameInner}>
             <img
               src={
-                promotion && promotion.qr_code_image
+                promotion && promotion.phone_image
                   ? `http://localhost:8000/storage/${promotion.phone_image}`
-                  : " {screenImages[currentScreen]}"
+                  : screenImages[currentScreen]
               }
               alt="App screen"
               className={styles.frameImage}
+              onError={e => { e.target.onerror = null; e.target.src = screenImages[currentScreen]; }}
             />
           </div>
         </div>
@@ -113,10 +114,11 @@ function Promotion() {
                 src={
                   promotion && promotion.qr_code_image
                     ? `http://localhost:8000/storage/${promotion.qr_code_image}`
-                    : ""
+                    : qrImg
                 }
                 alt="Download Basirah App QR"
                 className={styles.qrImageSmall}
+                onError={e => { e.target.onerror = null; e.target.src = qrImg; }}
               />
               <div className={styles.qrLabelSmall}>Scan</div>
             </div>
@@ -144,14 +146,14 @@ function Promotion() {
             </a>
             <div className={styles.qrContainerSmall}>
               <img
-                // src={qrImg}
                 src={
                   promotion && promotion.qr_code_image
                     ? `http://localhost:8000/storage/${promotion.qr_code_image}`
-                    : "{qrImg}"
+                    : qrImg
                 }
                 alt="Download Basirah App QR for Play Store"
                 className={styles.qrImageSmall}
+                onError={e => { e.target.onerror = null; e.target.src = qrImg; }}
               />
               <div className={styles.qrLabelSmall}>Scan</div>
             </div>

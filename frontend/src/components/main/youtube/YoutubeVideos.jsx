@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import styles from "./Youtube.module.css";
+import { fetchYoutubeVideos } from '../../../api/youtube';
 
 function chunkArray(array, size) {
   const result = [];
@@ -25,20 +26,13 @@ function YoutubeVideos() {
 
   useEffect(() => {
     setLoading(true);
-    const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
-    const CHANNEL_ID = import.meta.env.VITE_YOUTUBE_CHANNEL_ID;
-    fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&maxResults=9&order=${sortOption}&key=${API_KEY}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setVideos(data.items || []);
+    fetchYoutubeVideos()
+      .then((res) => {
+        setVideos(res.data.slice(0, 6)); // Limit to 6 videos
         setLoading(false);
       })
-      .catch(() => {
-        setLoading(false);
-      });
-  }, [sortOption]);
+      .catch(() => setLoading(false));
+  }, []);
 
   const handleVideoClick = (video) => {
     setSelectedVideo(video);
@@ -71,18 +65,6 @@ function YoutubeVideos() {
         </div>
 
         {/* Filter */}
-        <div className={styles.filterContainer}>
-          <select
-            className={styles.filterSelect}
-            value={sortOption}
-            onChange={handleSortChange}
-          >
-            <option value="date">Latest Videos</option>
-            <option value="rating">Most Popular</option>
-            <option value="relevant">Most Relevant</option>
-            <option value="viewCount">Most Viewed</option>
-          </select>
-        </div>
 
         {/* Loading State */}
         {loading && (
@@ -99,36 +81,30 @@ function YoutubeVideos() {
               // Check if selectedVideo is in this row
               const isSelectedInRow =
                 selectedVideo &&
-                row.some((v) => v.id.videoId === selectedVideo.id.videoId);
+                row.some((v) => v.id === selectedVideo.id);
               return (
                 <React.Fragment key={rowIndex}>
                   <div className={styles.videoGrid}>
                     {row.map((video) => (
                       <div
-                        key={video.id.videoId}
+                        key={video.id}
                         className={`${styles.videoCard} ${
-                          selectedVideo &&
-                          selectedVideo.id.videoId === video.id.videoId
+                          selectedVideo && selectedVideo.id === video.id
                             ? styles.selected
                             : ""
                         }`}
-                        onClick={() => handleVideoClick(video)}
+                        onClick={() => setSelectedVideo(video)}
                       >
                         <div className={styles.videoThumbnail}>
-                          <img
-                            src={video.snippet.thumbnails.high.url}
-                            alt={video.snippet.title}
-                          />
+                          <img src={video.thumbnail} alt={video.title} />
                           <div className={styles.playButton}>
                             <FaPlay className={styles.playIcon} />
                           </div>
                         </div>
                         <div className={styles.videoInfo}>
-                          <h3 className={styles.videoTitle}>
-                            {video.snippet.title}
-                          </h3>
+                          <h3 className={styles.videoTitle}>{video.title}</h3>
                           <p className={styles.videoDescription}>
-                            {video.snippet.description}
+                            {video.description}
                           </p>
                         </div>
                       </div>
@@ -144,22 +120,33 @@ function YoutubeVideos() {
                           display: "flex",
                           justifyContent: "center",
                           background: "#111",
+                          position: "relative"
                         }}
                       >
+                        <button
+                          className={styles.closeButton}
+                          style={{
+                            position: "absolute",
+                            top: 10,
+                            right: 10,
+                            zIndex: 2
+                          }}
+                          onClick={handleCloseVideo}
+                          aria-label="Close video"
+                        >
+                          ×
+                        </button>
                         <iframe
-                          width={isShortVideo(selectedVideo) ? "350" : "900"}
-                          height={isShortVideo(selectedVideo) ? "500" : "390"}
-                          src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}`}
-                          title={selectedVideo.snippet.title}
+                          width="900"
+                          height="390"
+                          src={`https://www.youtube.com/embed/${selectedVideo.id}`}
+                          title={selectedVideo.title}
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
                           style={{
                             maxWidth: "100%",
                             border: "none",
                             background: "#111",
-                            height: isShortVideo(selectedVideo)
-                              ? "500px"
-                              : "390px",
                           }}
                         ></iframe>
                       </div>
@@ -183,3 +170,5 @@ function YoutubeVideos() {
 }
 
 export default YoutubeVideos;
+
+
