@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('app_store_url')->nullable();
             $table->string('play_store_url')->nullable();
             $table->string('qr_code_image')->nullable();
+            $table->string('qr_code_image_playstore')->nullable();
             $table->string('phone_image')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();

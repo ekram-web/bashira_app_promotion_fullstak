@@ -58,7 +58,10 @@ function Promotion() {
               }
               alt="App screen"
               className={styles.frameImage}
-              onError={e => { e.target.onerror = null; e.target.src = screenImages[currentScreen]; }}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = screenImages[currentScreen];
+              }}
             />
           </div>
         </div>
@@ -118,7 +121,10 @@ function Promotion() {
                 }
                 alt="Download Basirah App QR"
                 className={styles.qrImageSmall}
-                onError={e => { e.target.onerror = null; e.target.src = qrImg; }}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = qrImg;
+                }}
               />
               <div className={styles.qrLabelSmall}>Scan</div>
             </div>
@@ -147,13 +153,20 @@ function Promotion() {
             <div className={styles.qrContainerSmall}>
               <img
                 src={
-                  promotion && promotion.qr_code_image
-                    ? `http://localhost:8000/storage/${promotion.qr_code_image}`
+                  promotion &&
+                  (promotion.qr_code_image_playstore || promotion.qr_code_image)
+                    ? `http://localhost:8000/storage/${
+                        promotion.qr_code_image_playstore ||
+                        promotion.qr_code_image
+                      }`
                     : qrImg
                 }
                 alt="Download Basirah App QR for Play Store"
                 className={styles.qrImageSmall}
-                onError={e => { e.target.onerror = null; e.target.src = qrImg; }}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = qrImg;
+                }}
               />
               <div className={styles.qrLabelSmall}>Scan</div>
             </div>

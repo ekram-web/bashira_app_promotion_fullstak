@@ -30,6 +30,7 @@ class PromotionController extends Controller
             'app_store_url' => 'nullable|url|max:255',
             'play_store_url' => 'nullable|url|max:255',
             'qr_code_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'qr_code_image_playstore' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'phone_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'is_active' => 'boolean'
         ]);
@@ -39,7 +40,10 @@ class PromotionController extends Controller
             $qrCodePath = $request->file('qr_code_image')->store('promotion-images', 'public');
             $data['qr_code_image'] = $qrCodePath;
         }
-
+        if ($request->hasFile('qr_code_image_playstore')) {
+            $qrCodePath2 = $request->file('qr_code_image_playstore')->store('promotion-images', 'public');
+            $data['qr_code_image_playstore'] = $qrCodePath2;
+        }
         if ($request->hasFile('phone_image')) {
             $phoneImagePath = $request->file('phone_image')->store('promotion-images', 'public');
             $data['phone_image'] = $phoneImagePath;
@@ -67,30 +71,36 @@ class PromotionController extends Controller
             'app_store_url' => 'nullable|url|max:255',
             'play_store_url' => 'nullable|url|max:255',
             'qr_code_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20480',
+            'qr_code_image_playstore' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20480',
             'phone_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20480',
             'is_active' => 'boolean'
         ]);
 
         try {
             $promotion = Promotion::findOrFail($id);
-            
+
             // Handle image uploads
             if ($request->hasFile('qr_code_image')) {
                 // Delete old QR code image if exists
                 if ($promotion->qr_code_image && Storage::disk('public')->exists($promotion->qr_code_image)) {
                     Storage::disk('public')->delete($promotion->qr_code_image);
                 }
-                
                 $qrCodePath = $request->file('qr_code_image')->store('promotion-images', 'public');
                 $data['qr_code_image'] = $qrCodePath;
             }
-
+            if ($request->hasFile('qr_code_image_playstore')) {
+                // Delete old QR code image for playstore if exists
+                if ($promotion->qr_code_image_playstore && Storage::disk('public')->exists($promotion->qr_code_image_playstore)) {
+                    Storage::disk('public')->delete($promotion->qr_code_image_playstore);
+                }
+                $qrCodePath2 = $request->file('qr_code_image_playstore')->store('promotion-images', 'public');
+                $data['qr_code_image_playstore'] = $qrCodePath2;
+            }
             if ($request->hasFile('phone_image')) {
                 // Delete old phone image if exists
                 if ($promotion->phone_image && Storage::disk('public')->exists($promotion->phone_image)) {
                     Storage::disk('public')->delete($promotion->phone_image);
                 }
-                
                 $phoneImagePath = $request->file('phone_image')->store('promotion-images', 'public');
                 $data['phone_image'] = $phoneImagePath;
             }
@@ -106,16 +116,18 @@ class PromotionController extends Controller
     {
         try {
             $promotion = Promotion::findOrFail($id);
-            
+
             // Delete image files if exist
             if ($promotion->qr_code_image && Storage::disk('public')->exists($promotion->qr_code_image)) {
                 Storage::disk('public')->delete($promotion->qr_code_image);
             }
-            
+            if ($promotion->qr_code_image_playstore && Storage::disk('public')->exists($promotion->qr_code_image_playstore)) {
+                Storage::disk('public')->delete($promotion->qr_code_image_playstore);
+            }
             if ($promotion->phone_image && Storage::disk('public')->exists($promotion->phone_image)) {
                 Storage::disk('public')->delete($promotion->phone_image);
             }
-            
+
             $promotion->delete();
             return redirect()->route('admin.promotion.index')->withSuccess('Promotion deleted successfully!');
         } catch (\Exception $e) {

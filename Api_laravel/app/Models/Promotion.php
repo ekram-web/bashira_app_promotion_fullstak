@@ -12,6 +12,7 @@ class Promotion extends Model
         'app_store_url',
         'play_store_url',
         'qr_code_image',
+        'qr_code_image_playstore',
         'phone_image',
         'is_active'
     ];
