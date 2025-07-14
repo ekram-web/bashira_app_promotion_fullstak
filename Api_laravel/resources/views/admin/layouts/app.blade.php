@@ -17,7 +17,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Basirah Admin</title>
+    <link rel="icon" type="image/png" href="/images/Basirah Logo Mark (Full Color).jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -137,12 +138,14 @@
                     <span :class="$store.theme.dark ? 'hidden' : ''" class="material-icons">dark_mode</span>
                     <span :class="$store.theme.dark ? '' : 'hidden'" class="material-icons">light_mode</span>
                 </button>
+                {{--
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-blue-700 dark:hover:text-yellow-300 bg-transparent border-none p-0 m-0 cursor-pointer w-full text-left" title="Logout">
                         <span class="material-icons">logout</span> <span x-show="showText" x-cloak class="transition-all duration-300">Logout</span>
                     </button>
                 </form>
+                --}}
             </div>
         </aside>
         <!-- Main Content -->

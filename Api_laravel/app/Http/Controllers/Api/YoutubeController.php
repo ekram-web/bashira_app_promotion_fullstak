@@ -21,10 +21,21 @@ class YoutubeController extends Controller
                     $media = $entry->children('http://search.yahoo.com/mrss/');
                     $yt = $entry->children('http://www.youtube.com/xml/schemas/2015');
                     $videoId = (string)$yt->videoId;
+                    $title = (string)$entry->title;
+                    $description = (string)$media->group->description;
+
+                    // Filter out Shorts by hashtag in title or description
+                    if (
+                        stripos($title, '#shorts') !== false ||
+                        stripos($description, '#shorts') !== false
+                    ) {
+                        continue; // skip this video
+                    }
+
                     $videos[] = [
                         'id' => $videoId,
-                        'title' => (string)$entry->title,
-                        'description' => (string)$media->group->description,
+                        'title' => $title,
+                        'description' => $description,
                         'published' => (string)$entry->published,
                         'thumbnail' => "https://img.youtube.com/vi/$videoId/hqdefault.jpg",
                     ];
