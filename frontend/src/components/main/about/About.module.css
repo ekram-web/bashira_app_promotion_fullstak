@@ -73,6 +73,7 @@
   color: #231f20cc;
   line-height: 1.7;
   max-width: 520px;
+  text-align: justify;
 }
 
 @media (max-width: 900px) {

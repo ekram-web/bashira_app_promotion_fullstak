@@ -3,6 +3,7 @@ import styles from "./how.module.css";
 import { motion } from "framer-motion";
 import homeImg from "../../../assets/images/home.jpg";
 import libraryImg from "../../../assets/images/library.jpg";
+import registerImg from "../../../assets/images/register.jpg";
 import loginImg from "../../../assets/images/login.jpg";
 
 const steps = [
@@ -10,19 +11,19 @@ const steps = [
     label: "Step 1",
     title: "Sign Up ",
     desc: "Create your account and unlock a world of connections with the Quran.",
-    img: loginImg,
+    img: registerImg,
   },
   {
     label: "Step 2",
-    title: "Register on your preferred Courses",
-    desc: "Select , Subscribe and Learn",
-    img: homeImg,
+    title: "Login to your Account",
+    desc: "Access your preffered courses right on hand!",
+    img: loginImg,
   },
   {
     label: "Step 3",
     title: "Start Nurturing you mind",
-    desc: "Enjoy Your Journey",
-    img: libraryImg,
+    desc: "Select , Learn and Enjoy Your Journey",
+    img: homeImg,
   },
 ];
 

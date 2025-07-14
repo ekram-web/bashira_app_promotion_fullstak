@@ -1,5 +1,5 @@
 .reviewSection {
-  padding: 3rem 3.5rem 2.5rem 3.5rem;
+  padding: 3rem 1.5rem 2.5rem 1.5rem;
   background: #f7fafd;
   text-align: center;
 }
@@ -9,18 +9,30 @@
   font-size: 1.7rem;
   margin-bottom: 2.2rem;
   font-weight: 700;
+  font-family: "Merriweather", serif;
 }
 
-.reviews {
+/* .reviews {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   gap: 5rem;
   align-items: stretch;
   overflow: hidden;
+} */
+.reviewsWrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
-.reviewCard {
+.slider {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 2rem;
+}
+
+/* .reviewCard {
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
@@ -33,6 +45,24 @@
   align-items: center;
   justify-content: center;
   transition: box-shadow 0.2s, transform 0.2s;
+} */
+
+.reviewCard {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  flex-grow: 0;
+  width: 100%;
+  /* min-width: 220px;
+  max-width: 350px; */
 }
 
 .reviewCard:hover {
@@ -40,9 +70,9 @@
   transform: translateY(-4px) scale(1.03);
 }
 
-.reviewCard:not(:last-child) {
+/* .reviewCard:not(:last-child) {
   margin-right: 2.5rem;
-}
+} */
 
 .avatar {
   width: 70px;
@@ -60,6 +90,8 @@
   margin-bottom: 1.2rem;
   font-style: italic;
   line-height: 1.6;
+  text-align: center;
+  word-break: break-word;
 }
 
 .reviewer {
@@ -80,7 +112,48 @@
   opacity: 0.8;
 }
 
-@media (max-width: 900px) {
+.arrowDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 5rem;
+}
+
+.arrowBtn {
+  transform: translateY(-50%);
+  background: #fff;
+  border: 1px solid #00c894;
+  color: #00c894;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.arrowBtn:hover,
+.arrowBtn:focus {
+  background: #00c894;
+  color: #fff;
+  outline: none;
+}
+
+.leftArrow {
+  left: 8px;
+}
+
+.rightArrow {
+  right: 8px;
+}
+
+/* @media (max-width: 900px) {
   .reviews {
     gap: 1.5rem;
     flex-wrap: wrap;
@@ -98,4 +171,82 @@
     line-height: 1.8;
     padding: 0 0.2rem;
   }
+} */
+@media (max-width: 900px) {
+  .arrowBtn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+  }
+
+  .text {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0 0.5rem;
+  }
+
+  .reviewCard {
+    min-width: 160px;
+    max-width: 100%;
+    padding: 1rem 0.5rem;
+  }
 }
+
+/* @media (max-width: 600px) {
+  .reviewSection {
+    padding: 1.2rem 0.3rem 1.2rem 0.3rem;
+  }
+  .heading {
+    font-size: 1.15rem;
+    margin-bottom: 1.2rem;
+  }
+  .reviews {
+    gap: 0.5rem;
+  }
+  .reviewCard {
+    max-width: 98vw;
+    min-width: 0;
+    padding: 0.7rem 0.2rem 0.7rem 0.2rem;
+    height: auto;
+  }
+  .avatar {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.7rem;
+  }
+  .text {
+    font-size: 0.98rem;
+    padding: 0 0.1rem;
+  }
+  .name {
+    font-size: 0.98rem;
+  }
+  .role {
+    font-size: 0.88rem;
+  }
+} */
+
+/* @media (max-width: 400px) {
+  .reviewSection {
+    padding: 0.5rem 0.1rem 0.5rem 0.1rem;
+  }
+  .heading {
+    font-size: 0.98rem;
+  }
+  .reviewCard {
+    padding: 0.4rem 0.1rem 0.4rem 0.1rem;
+  }
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+  .text {
+    font-size: 0.88rem;
+  }
+} */

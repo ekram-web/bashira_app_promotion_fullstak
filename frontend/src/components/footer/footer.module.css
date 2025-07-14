@@ -1,7 +1,7 @@
 .footer {
   background: linear-gradient(120deg, #042048 60%, #00c894 100%);
   color: #fff;
-  padding: -1.1rem 1rem 0 1rem;
+  padding: 1rem;
   position: relative;
   overflow: hidden;
   font-family: "Poppins", sans-serif;
@@ -93,12 +93,27 @@
   margin-top: 3.7rem;
 }
 
-.footerAddress,
+/* .footerAddress,
 .footerPhone {
   color: #e0f7f4;
   font-size: 1.05rem;
   margin: 0;
   text-align: left;
+} */
+
+.footerAddress{
+  display: block;
+  size: 1rem;
+  color: #e0f7f4;
+  font-size: 1.05rem;
+  margin: 0;
+  text-align: justify;
+}
+.footerPhone {
+  color: #e0f7f4;
+  font-size: 1.05rem;
+  margin: 0;
+  text-align: justify;
 }
 
 .socials {
@@ -163,7 +178,7 @@
   color: #00c894;
 }
 
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
   .footerContent {
     flex-direction: column;
     align-items: stretch;
@@ -198,8 +213,70 @@
     justify-content: flex-start;
     margin-top: 0.5rem;
   }
+} */
+
+@media (max-width: 900px) and (min-width: 601px) {
+  .footerContent {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: auto;
+    gap: 2rem;
+    max-width: 98vw;
+    padding-top: 1rem;
+  }
+  .leftColumn, .rightColumn {
+    flex: 0.05 0.95 45%;
+    min-width: 0;
+    width: 45%;
+    margin-left: 0;
+    margin-right: 4rem;
+    margin-top: 0;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+  .middleColumn {
+    margin-top: 8rem;
+    margin-left: 5rem;
+  }
 }
 
+@media (max-width: 600px) {
+  .footerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+    padding-top: 1rem;
+    max-width: 98vw;
+  }
+  .leftColumn,
+  .rightColumn,
+  .middleColumn {
+    /* flex: unset; */
+    min-width: 0;
+    width: 100%;
+    align-items: center;
+    gap: 1.2rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+  }
+  .partnerLogo {
+    width: 90px;
+    margin-right: 5rem;
+  }
+  .footerLogo {
+    width: 110px;
+    margin-left: 1rem;
+  }
+  .logoBlock {
+    gap: 0.6rem;
+  }
+  .socials {
+    justify-content: flex-start;
+    margin-top: 0.5rem;
+  }
+}
 .copyright {
   display: none;
 }
