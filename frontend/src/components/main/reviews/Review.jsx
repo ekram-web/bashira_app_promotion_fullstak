@@ -198,7 +198,7 @@ function Review() {
           ))}
         </div>
       </div>
-      // Navigation arrows
+      {/* Navigation arrows */}
       <div className={styles.arrowDiv}>
         <button
           className={`${styles.arrowBtn} ${styles.leftArrow}`}
